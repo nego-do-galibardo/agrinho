@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoAgro | Consciência e Alimento</title>
+    <title>Agro Forte | Futuro Sustentável</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1b4332; /* Verde Profundo */
-            --secondary: #d4a373; /* Bege Terra */
-            --accent: #ffb703; /* Ouro Sol */
-            --bg: #f8f9fa;
-            --text: #212529;
+            --primary: #1b4332; 
+            --secondary: #2d6a4f;
+            --accent: #ffb703;
+            --text-dark: #1a1a1a;
+            --light: #f8f9fa;
             --white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Montserrat', sans-serif, system-ui;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.8;
-            scroll-behavior: smooth;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- Header Dinâmico --- */
+        /* --- Header Impactante --- */
         header {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=1920&q=80');
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -40,163 +41,218 @@
             padding: 20px;
         }
 
-        header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; }
-        header p { font-size: 1.2rem; max-width: 700px; margin-bottom: 30px; opacity: 0.9; }
+        header h1 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 15px; }
+        header p { font-size: 1.2rem; max-width: 800px; margin-bottom: 25px; }
 
-        .cta-button {
-            padding: 15px 40px;
-            background: var(--accent);
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.4s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
+        /* --- Seção de Conscientização --- */
+        .container { max-width: 1200px; margin: -60px auto 60px; padding: 0 20px; }
 
-        .cta-button:hover { transform: scale(1.05); background: var(--white); }
-
-        /* --- Seção de Conscientização (Mitos vs Verdades) --- */
-        .awareness-box {
+        .intro-card {
             background: var(--white);
-            padding: 60px 20px;
-            margin: -50px auto 50px;
-            max-width: 1000px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 10;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            border-bottom: 8px solid var(--accent);
         }
 
-        .section-title { text-align: center; color: var(--primary); margin-bottom: 40px; font-size: 2rem; }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .info-item {
-            padding: 20px;
-            border-left: 4px solid var(--secondary);
-            background: #fdfdfd;
-        }
-
-        .info-item h4 { color: var(--secondary); margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem; }
+        .intro-card h2 { color: var(--primary); margin-bottom: 20px; }
 
         /* --- Galeria Interativa --- */
-        .gallery {
+        .gallery-title { text-align: center; margin: 60px 0 30px; color: var(--primary); font-size: 2.5rem; }
+        
+        .grid-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 25px;
+            margin-bottom: 100px;
         }
 
-        .photo-card {
+        .photo-item {
             position: relative;
-            height: 350px;
             border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
+            height: 400px;
+            transition: 0.4s ease;
         }
 
-        .photo-card img {
+        .photo-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(40%);
-            transition: 0.6s;
+            transition: 0.5s;
         }
 
-        .photo-overlay {
+        .overlay {
             position: absolute;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(transparent, var(--primary));
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(27, 67, 50, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             color: white;
-            padding: 30px 20px;
+            opacity: 0;
             transition: 0.4s;
-        }
-
-        .photo-card:hover img { transform: scale(1.1); filter: grayscale(0%); }
-        .photo-card:hover .photo-overlay { bottom: 0; }
-
-        /* --- Rodapé --- */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 60px 20px;
+            padding: 20px;
             text-align: center;
-            margin-top: 80px;
         }
 
-        .footer-content { max-width: 600px; margin: 0 auto; }
-        .footer-content hr { margin: 20px 0; opacity: 0.2; }
+        .photo-item:hover .overlay { opacity: 1; }
+        .photo-item:hover img { transform: scale(1.1); }
+
+        .btn-plus {
+            margin-top: 15px;
+            padding: 8px 20px;
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* --- Modal (A "Página" que abre no clique) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 900px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .modal-img { flex: 1; min-width: 300px; height: 400px; background-size: cover; background-position: center; }
+        .modal-text { flex: 1; min-width: 300px; padding: 40px; }
+        .modal-text h2 { color: var(--primary); margin-bottom: 15px; }
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 30px; cursor: pointer; color: var(--primary);
+            font-weight: bold;
+        }
+
+        footer { background: var(--primary); color: white; padding: 50px 20px; text-align: center; }
 
     </style>
 </head>
 <body>
 
     <header>
-        <h1>A Terra Fala, Nós Ouvimos</h1>
-        <p>Descubra como a tecnologia e a preservação caminham juntas para garantir o alimento de amanhã sem destruir o hoje.</p>
-        <a href="#galeria" class="cta-button">Ver Transformação</a>
+        <h1>Agro Forte, Futuro Consciente</h1>
+        <p>A tecnologia que alimenta bilhões é a mesma que protege nossas águas e florestas. Clique nas imagens para entender como equilibramos essa balança.</p>
     </header>
 
-    <div class="awareness-box">
-        <h2 class="section-title">Conscientização Necessária</h2>
-        <div class="info-grid">
-            <div class="info-item">
-                <h4>O Problema</h4>
-                <p>O desperdício de água na irrigação convencional chega a 40%. O solo compactado perde a capacidade de absorver nutrientes.</p>
+    <div class="container">
+        <div class="intro-card">
+            <h2>Nosso Compromisso 2026</h2>
+            <p>O Brasil produz alimento para mais de 1 bilhão de pessoas usando apenas 9% do território para agricultura, enquanto preserva 66% de sua vegetação nativa. Isso é equilíbrio real.</p>
+        </div>
+
+        <h2 class="gallery-title">Pilares da Sustentabilidade</h2>
+        
+        <div class="grid-gallery">
+            <div class="photo-item" onclick="openModal('prod')">
+                <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=800&q=80" alt="Produção">
+                <div class="overlay">
+                    <h3>Produção de Alta Precisão</h3>
+                    <p>Menos terra, mais comida.</p>
+                    <div class="btn-plus">Clique para detalhes</div>
+                </div>
             </div>
-            <div class="info-item">
-                <h4>A Solução</h4>
-                <p>Sensores de umidade em tempo real e drones de mapeamento permitem que cada planta receba apenas o necessário.</p>
+
+            <div class="photo-item" onclick="openModal('tech')">
+                <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=800&q=80" alt="Tecnologia">
+                <div class="overlay">
+                    <h3>Tecnologia de Monitoramento</h3>
+                    <p>IA e Drones a serviço do clima.</p>
+                    <div class="btn-plus">Clique para detalhes</div>
+                </div>
             </div>
-            <div class="info-item">
-                <h4>Seu Papel</h4>
-                <p>Consumir de produtores certificados e entender a origem do alimento é o primeiro passo para uma economia verde.</p>
+
+            <div class="photo-item" onclick="openModal('solo')">
+                <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80" alt="Solo">
+                <div class="overlay">
+                    <h3>Recuperação de Solos</h3>
+                    <p>Plantio direto e sequestro de carbono.</p>
+                    <div class="btn-plus">Clique para detalhes</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <h2 class="section-title" id="galeria">O Agro em Foco</h2>
-    <div class="gallery">
-        <div class="photo-card">
-            <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80" alt="Plantação">
-            <div class="photo-overlay">
-                <h3>Bioinsumos</h3>
-                <p>Substituindo químicos por soluções biológicas que não contaminam os lençóis freáticos.</p>
-            </div>
-        </div>
-        <div class="photo-card">
-            <img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0c3023?auto=format&fit=crop&w=800&q=80" alt="Drones no campo">
-            <div class="photo-overlay">
-                <h3>Monitoramento Aéreo</h3>
-                <p>Drones que identificam a saúde da lavoura, reduzindo o uso de tratores e emissão de CO2.</p>
-            </div>
-        </div>
-        <div class="photo-card">
-            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80" alt="Irrigação">
-            <div class="photo-overlay">
-                <h3>Gotejamento Inteligente</h3>
-                <p>Economia de até 70% de água comparado aos métodos tradicionais de aspersão.</p>
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalImg" class="modal-img"></div>
+            <div class="modal-text">
+                <h2 id="modalTitle">Título</h2>
+                <p id="modalDesc">Descrição detalhada aqui.</p>
+                <hr style="margin: 20px 0; opacity: 0.2;">
+                <p><strong>Dica de Conscientização:</strong> <span id="modalTip">Dica aqui.</span></p>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <h3>EcoAgro Sustentável</h3>
-            <p>Este projeto visa educar e conscientizar sobre as práticas que mantêm o equilíbrio entre a mesa do cidadão e a floresta de pé.</p>
-            <hr>
-            <p>&copy; 2026 - Tecnologia a serviço da vida.</p>
-        </div>
+        <p><strong>Agro Sustentável</strong> &copy; 2026 - O Futuro é Verde e Produtivo.</p>
     </footer>
+
+    <script>
+        const data = {
+            'prod': {
+                title: "Eficiência Vertical",
+                desc: "A agricultura moderna foca em aumentar a produção sem expandir a área desmatada. Com sementes melhoradas e análise de solo via satélite, produzimos 3x mais na mesma área do que há 20 anos.",
+                tip: "Ao comprar produtos de origem certificada, você apoia produtores que respeitam os limites da terra.",
+                img: "url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=800&q=80')"
+            },
+            'tech': {
+                title: "Drones e Biotecnologia",
+                desc: "Drones mapeiam áreas que precisam de água ou nutrientes, evitando o uso excessivo de produtos químicos. A tecnologia garante que a biodiversidade local não seja afetada pelo manejo agrícola.",
+                tip: "A tecnologia no campo reduz em até 80% o desperdício de água potável na irrigação.",
+                img: "url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=800&q=80')"
+            },
+            'solo': {
+                title: "Carbono Zero",
+                desc: "O sistema de Plantio Direto mantém a palhada no solo, impedindo a erosão e transformando a fazenda em um 'aspirador' de CO2, ajudando a resfriar o planeta.",
+                tip: "O solo saudável é o maior filtro de água do mundo. Preservá-lo é garantir nossos rios vivos.",
+                img: "url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80')"
+            }
+        };
+
+        function openModal(key) {
+            document.getElementById('modalTitle').innerText = data[key].title;
+            document.getElementById('modalDesc').innerText = data[key].desc;
+            document.getElementById('modalTip').innerText = data[key].tip;
+            document.getElementById('modalImg').style.backgroundImage = data[key].img;
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+
+        // Fechar se clicar fora do conteúdo
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('infoModal')) {
+                closeModal();
+            }
+        }
+    </script>
 
 </body>
 </html>
